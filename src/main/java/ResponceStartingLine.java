@@ -16,4 +16,16 @@ public class ResponceStartingLine {
     public String toString() {
         return "HTTP/" + version + " " + statusCode + " " + reasonPhrase;
     }
+
+    public double getVersion() {
+        return version;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public String getReasonPhrase() {
+        return reasonPhrase;
+    }
 }

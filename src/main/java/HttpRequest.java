@@ -12,18 +12,18 @@ public class HttpRequest {
     }
 
     public HttpRequest(RequestStartingLine startingLine, Headers headers) {
-        this(startingLine, headers, null);
+        this(startingLine, headers, new MessageBody(""));
     }
 
     public HttpRequest(RequestStartingLine startingLine) {
-        this(startingLine, null, null);
+        this(startingLine, new Headers(), new MessageBody(""));
     }
     @Override
     public String toString() {
         String startingLineString = ((startingLine == null) ? "" : startingLine.toString()) + System.getProperty("line.separator");
         String headersString = ((headers == null) ? System.getProperty("line.separator") : headers.toString()) + System.getProperty("line.separator");
         String messageBodyString = ((messageBody == null) ? System.getProperty("line.separator") : messageBody.toString()+System.getProperty("line.separator"));
-        return startingLineString + headersString + messageBodyString;
+        return (new StringBuilder(startingLineString).append(new StringBuilder(headersString)).append(new StringBuilder(messageBodyString))).toString();
     }
 
     public RequestStartingLine getStartingLine() {

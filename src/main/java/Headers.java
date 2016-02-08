@@ -17,8 +17,9 @@ public class Headers {
         StringBuffer headerStringBuffer = new StringBuffer();
         for (String parameter: headers.keySet()) {
             String value = headers.get(parameter);
-            headerStringBuffer.append(parameter).append(": ").append(value).append("\n");
+            headerStringBuffer.append(parameter).append(": ").append(value).append(System.getProperty("line.separator"));
         }
+        //TO DO убрать лишний перенос
         return new String(headerStringBuffer);
     }
 

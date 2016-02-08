@@ -12,17 +12,35 @@ public class HttpResponce {
     }
 
     public HttpResponce(ResponceStartingLine startingLine, Headers headers) {
-        this(startingLine, headers, null);
+        this(startingLine, headers, new MessageBody(""));
     }
 
     public HttpResponce(ResponceStartingLine startingLine) {
-        this(startingLine, null, null);
+        this(startingLine, new Headers(), new MessageBody(""));
     }
+
+
     @Override
     public String toString() {
-        String startingLineString = ((startingLine == null) ? "" : startingLine.toString()) + "\r\n";
-        String headersString = ((headers == null) ? "" : headers.toString()) + "\r\n";
-        String messageBodyString = ((messageBody == null) ? "" : messageBody.toString()) + "\r\n";
+        String startingLineString = ((startingLine == null) ? "" : startingLine.toString()) + System.getProperty("line.separator");
+        String headersString = ((headers == null) ? "" : headers.toString()) + System.getProperty("line.separator");
+        String messageBodyString = ((messageBody == null) ? "" : messageBody.toString()) + System.getProperty("line.separator");
         return startingLineString + headersString + messageBodyString;
+    }
+
+    public ResponceStartingLine getStartingLine() {
+        return startingLine;
+    }
+
+    public Headers getHeaders() {
+        return headers;
+    }
+
+    public MessageBody getMessageBody() {
+        return messageBody;
+    }
+
+    public String getPlainResponce() {
+        return plainResponce;
     }
 }

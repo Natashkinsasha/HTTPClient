@@ -9,9 +9,9 @@ import java.net.Socket;
 public class Test {
     public static void main(String argv[]) {
         try {
-            Socket s = new Socket(InetAddress.getByName("httpbin.org"), 80);
+            Socket s = new Socket(InetAddress.getByName("habrahabr.ru"), 80);
             PrintWriter pw = new PrintWriter(s.getOutputStream());
-            pw.print("GET / HTTP/1.1\r\n" + "Host: httpbin.org\r\n\r\n");
+            pw.print("GET / HTTP/1.1\r\n" + "Host: alizar.habrahabr.ru\r\n\r\n");
             pw.flush();
             BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String t;
